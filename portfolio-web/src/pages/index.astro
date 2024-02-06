@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MailIcon from "../icons/Mail.astro";
+import BriefcaseIcon from "../icons/Briefcase.astro";
+import UserIcon from "../icons/User.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import Hero from "../components/Hero.astro";
+import Experience from "../components/Experience.astro";
+import AboutMe from "../components/AboutMe.astro";
+import Contact from "../components/Contact.astro";
+---
+
+<Layout title="Portfolio Web" description="Desarrollador FullStack">
+	<main class="px-4">
+		<SectionContainer class="py-24 lg:py-48">
+			<Hero />
+		</SectionContainer>
+
+		<SectionContainer id="experiencia">
+			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80">
+				<BriefcaseIcon class="size-7" />
+			  	Experiencia laboral
+			</h2>
+			<Experience />
+		</SectionContainer>
+
+		<SectionContainer id="sobre-mi">
+			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80">
+				<UserIcon class="size-7" />
+				Sobre mí
+			</h2>
+			<AboutMe />
+		</SectionContainer>
+
+		<SectionContainer id="contacto">
+			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80">
+				<MailIcon class="size-7" />
+			  	Contacto
+			</h2>
+			<Contact />
+		</SectionContainer>
+	</main>
+</Layout>

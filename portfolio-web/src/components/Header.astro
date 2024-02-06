@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import photo from "../images/photo.webp";
+
+const navItems = [
+    {
+        title: "Experiencia",
+        label: "experiencia",
+        url: "/#experiencia",
+    },
+    {
+        title: "Sobre mí",
+        label: "sobre-mi",
+        url: "/#sobre-mi",
+    },
+    {
+        title: "Contacto",
+        label: "contacto",
+        url: "/#contacto",
+    },
+]
+---
+
+<header>
+    <nav class="px-4 lg:px-6 py-2">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+            <a href="/#" class="flex items-center">
+                <Image class="rounded-full size-12 lg:size-12 mr-3" src={photo} alt="allianation" />
+                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white tracking-widest">PORTFOLIO</span>
+            </a>
+            <div class="hidden justify-between items-center w-full lg:flex lg:w-auto">
+                <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                    {
+                        navItems.map((link) => (
+                            <li>
+                                <a
+                                    class="relative block px-2 py-2 transition hover:text-yellow-800 dark:hover:text-yellow-200"
+                                    aria-label={link.label}
+                                    href={link.url}
+                                >
+                                    {link.title}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const sections = document.querySelectorAll("section");
+        const navItems = document.querySelectorAll("header nav div ul li a");
+
+        const callback = (entries: any[]) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    navItems.forEach((item) => {
+                        if (item.getAttribute("aria-label") == entry.target.id) {
+                            item.classList.add("text-yellow-500");
+                        } else {
+                            item.classList.remove("text-yellow-500");
+                        }
+                    })
+                }
+            })
+        }
+  
+        const observer = new IntersectionObserver(callback, {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.3,
+        });
+  
+        sections.forEach((section) => {
+            observer.observe(section);
+        });
+  
+        document.onvisibilitychange = () => {
+            if (document.visibilityState === "hidden") {
+                observer.disconnect();
+            }
+        }
+    });
+</script>

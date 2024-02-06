@@ -1,0 +1,36 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCIES = [
+    {
+        date: "Actualmente...",
+        title: "Desarrollador FullStack − Technisys",
+        description: "Desarrollo de características y funcionalidades. Mantenimiento y mejora de código. Mejora continua de habilidades técnicas.",
+    },
+    {
+        date: "nov. 2017 - abr. 2021",
+        title: "Desarrollador Senior − Swiss Medical Seguros",
+        description: "Desarrollo de características y funcionalidades. Mantenimiento y mejora de código. Diseño y desarrollo de arquitectura de software.",
+    },
+    {
+        date: "sept. 2014 - oct. 2017",
+        title: "Desarrollador de Software − Softtek",
+        description: "Desarrollo de características y funcionalidades. Mantenimiento y mejora de código. Investigación y evaluación de tecnologías. Participación en reuniones con clientes.",
+    },
+    {
+        date: "ene. 2013 - dic. 2013",
+        title: "Asistencia técnica − DIIT UNLaM",
+        description: "Asistencia técnica en convenio Universidad Nacional de La Matanza – Ministerio de Planificación.",
+    },
+]
+---
+
+<ol class="relative border-s border-gray-200 ml-3">
+    {
+        EXPERIENCIES.map((experience) => (
+            <li class="mb-10 ms-4">
+                <ExperienceItem {...experience} />
+            </li>
+        ))
+    }
+</ol>
